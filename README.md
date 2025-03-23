@@ -1,6 +1,6 @@
 # 📟 CapClaim – Insurance Claim Submission System
 
-**CapClaim** is a mini full-stack project simulating a real-world insurance claim workflow. It allows users to submit claims via a web form, securely uploads documents to AWS S3, stores metadata in a MySQL database, and sends real-time email confirmations using Gmail SMTP.
+**CapClaim** is a mini full-stack project simulating a real-world insurance claim workflow. It allows users to submit claims via a web form, securely uploads documents to AWS S3, stores metadata in a MySQL database, and sends real-time logs.
 
 > ⚙️ Built with technologies aligned to CapSpecialty's internship description.
 
@@ -14,7 +14,6 @@
 - **Amazon S3** – Secure file/document storage
 - **boto3** – AWS SDK for Python
 - **python-dotenv** – For environment configuration
-- **Gmail SMTP** – Email confirmation on successful claim
 - **Logging** – Tracks submissions and errors
 
 ---
@@ -25,7 +24,6 @@
 - ✅ Input validation on both frontend and backend
 - ✅ File upload to **Amazon S3**
 - ✅ Claim data inserted into **MySQL**
-- ✅ Email confirmation using **Gmail SMTP**
 - ✅ Centralized logging to `logs/app.log`
 
 ---
@@ -87,9 +85,8 @@ http://127.0.0.1:5000/
 1. User submits claim via form  
 2. Flask receives data and handles validation  
 3. File uploaded to **S3**  
-4. Claim metadata saved in **MySQL**  
-5. Email confirmation sent via **SMTP**  
-6. Logs recorded in `logs/app.log`
+4. Claim metadata saved in **MySQL**   
+5. Logs recorded in `logs/app.log`
 
 ---
 
@@ -99,7 +96,6 @@ http://127.0.0.1:5000/
 CapClaim/
 ├── app.py
 ├── lambda_handler.py
-├── email_utils.py
 ├── templates/
 │   └── form.html
 ├── logs/
