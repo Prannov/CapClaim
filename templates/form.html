@@ -1,31 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Submit Insurance Claim</title>
+  <meta charset="UTF-8">
+  <title>CapClaim – Submit Insurance Claim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 40px;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
 </head>
 <body>
+
   <h1>CapClaim – Submit a Claim</h1>
+
+  {% if message %}
+    <div class="message {{ 'success' if success else 'error' }}">
+      {{ message }}
+    </div>
+  {% endif %}
+
   <form action="/submit-claim" method="post" enctype="multipart/form-data">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
+    <label for="name">Full Name</label>
+    <input type="text" name="name" required>
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+    <label for="email">Email</label>
+    <input type="email" name="email" required>
 
-    <label>Claim Type:</label><br>
+    <label for="claim_type">Claim Type</label>
     <select name="claim_type" required>
       <option value="Health">Health</option>
       <option value="Auto">Auto</option>
       <option value="Property">Property</option>
-    </select><br><br>
+    </select>
 
-    <label>Description:</label><br>
-    <textarea name="description" rows="4" cols="40" required></textarea><br><br>
+    <label for="description">Claim Description</label>
+    <textarea name="description" rows="4" required></textarea>
 
-    <label>Upload File:</label><br>
-    <input type="file" name="file" accept=".png,.jpg,.jpeg,.pdf" required><br><br>
+    <label for="file">Upload File</label>
+    <input type="file" name="file" accept=".png,.jpg,.jpeg,.pdf" required>
 
     <input type="submit" value="Submit Claim">
   </form>
+
 </body>
 </html>
