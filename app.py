@@ -57,11 +57,11 @@ def submit_claim():
 
         send_claim_email(data["email"], data["name"], data["claim_type"])
 
-        return jsonify(result), 200
+        return render_template("form.html", message="Claim submitted successfully!", success=True)
         
     except Exception as e:
-        logging.error("Error in /submit-claim", exc_info=True)
-        return jsonify({"error": str(e)}), 500
+        print("Error:", e)
+        return render_template("form.html", message="An error occurred while submitting your claim.", success=False)
 
         
 
